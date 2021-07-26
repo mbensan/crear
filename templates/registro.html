@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block titulo %}REGISTRO USUARIO{% endblock %}
+
+{% block contenido %}
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-5">
+      <h1>REGISTRO DESDE BASE</h1>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="name" name="name" value="{{request.session.register_name}}">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" name="email" value="{{request.session.register_email}}">
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="mb-3">
+          <label for="password_confirm" class="form-label">Confirmar Contraseña</label>
+          <input type="password" class="form-control" id="password_confirm" name="password_confirm">
+        </div>
+        <input type="hidden" name="role" value="user">
+        <!--
+        <div class="mb-3">
+          <label for="role" class="form-label">Rol</label>
+          <select name="role" id="role">
+            <option value="user">Usuario Normal</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+        -->
+
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </form>
+
+    </div>
+  </div>
+  <div>
+    <a href="/login">Ingresar con usuario ya registrado</a>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block libreria %}
+
+
+{% endblock %}

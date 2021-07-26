@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block titulo %}LOGIN USUARIO{% endblock %}
+
+{% block contenido %}
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-5">
+      <h1>LOGIN DESDE BASE</h1>
+
+      <form method="POST">
+        {% csrf_token %}
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{request.session.login_email}}">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+      </form>
+    </div>
+  </div>
+  <div>
+    <a href="/registro">Registrarse</a>
+  </div>
+</div>
+{% endblock %}
+
+{% block libreria %}
+
+
+{% endblock %}
