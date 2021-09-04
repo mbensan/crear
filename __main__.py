@@ -4,24 +4,6 @@ import os
 import fileinput
 
 
-text_index = '''
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-</head>
-<body>
-  {% load static %}
-  {{ saludo }}
-  <script src="{% static 'js/index.js' %}"></script>
-</body>
-</html>
-'''
-
-
 def add_after(filename, old_line, new_line):
     with fileinput.FileInput(filename, inplace=True, backup = '.bak') as f:
         for line in f:
@@ -49,6 +31,8 @@ def create_app(project, app):
     os.system(f'cp ../crear/models.py {app}/models.py')
     os.system(f'cp ../crear/urls.py {app}/urls.py')
     os.system(f'cp ../crear/gitignore .gitignore')
+
+    os.system(f'rm -rf {project}/*.bak')
 
 
 def main():
