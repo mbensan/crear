@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
 import bcrypt
-from main.models import User
+from .models import User
 
 
 def logout(request):
@@ -13,7 +13,6 @@ def logout(request):
 
 def login(request):
     if request.method == "POST":
-        print(request.POST)
         user = User.objects.filter(email=request.POST['email'])
         if user:
             log_user = user[0]
@@ -50,7 +49,6 @@ def registro(request):
         if len(errors) > 0:
             for key, value in errors.items():
                 messages.error(request, value)
-                # print("DESDE EL FOR: ",key, value)
             
             request.session['register_name'] =  request.POST['name']
             request.session['register_email'] =  request.POST['email']
@@ -71,7 +69,7 @@ def registro(request):
             messages.success(request, "El usuario fue agregado con exito.")
             
 
-            request.session['usuario'] = {
+            request.session['user'] = {
                 "id" : usuario_nuevo.id,
                 "name": f"{usuario_nuevo.name}",
                 "email": usuario_nuevo.email

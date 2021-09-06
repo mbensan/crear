@@ -32,6 +32,8 @@ def create_app(project, app):
     os.system(f'cp ../crear/urls.py {app}/urls.py')
     os.system(f'cp ../crear/gitignore .gitignore')
 
+    os.system(f'rm -rf {project}/*.bak')
+
 
 def main():
     if len(sys.argv) < 3:
