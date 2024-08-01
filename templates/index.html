@@ -1,12 +1,5 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block titulo %}INDEX USUARIO{% endblock %}
-
-{% block contenido %}
-<h1>Bienvenid@: {{request.session.usuario.name}}</h1>
-<a href="/logout">SALIR DEL SISTEMA</a>
-
-{% endblock %}
-
-{% block libreria %}
+{% block content %}
+  <h3>Inicio</h3>
 {% endblock %}

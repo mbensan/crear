@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Proyecto</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'inicio' %}">Inicio</a>
+        </li>
+        {% if not user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'registro' %}">Registro</a>
+        </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'nueva_nota' %}">Notas</a>
+          </li>
+        {% endif %}
+
+      </ul>
+      {% if user.is_authenticated %}
+        <form class="d-flex" role="search" method="post" action="{% url 'logout' %}">
+          <label for="#" class="text-light">Hola {{user.username}}</label>
+          {% csrf_token %}
+          <button class="btn btn-outline-warning" type="submit">Salir</button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+</nav>

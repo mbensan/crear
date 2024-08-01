@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-4 offset-md-4 col-12">
+    <div class="card mt-2">
+      <h2>Ingresa</h2>
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="mt-2">
+          {{ form }}
+        </div>
+        <div class="mt-2">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+      <p>Si no tiene cuenta <a href="{% url 'registro' %}">crea una</a></p>
+    </div>
+  </div>
+</div>
+{% endblock %}

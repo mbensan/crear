@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4 col-12">
+      <div class="card mt-2">
+        <h2>Register</h2>
+        <form action="{% url 'registro' %}" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input name="username" type="text" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input name="email" type="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Repita Password</label>
+            <input name="pass_repeat" type="password" class="form-control" required>
+          </div>
+    
+          <button type="submit" class="btn btn-primary">Crear</button>
+        </form>
+        <p>Si ya tienes una cuenta, <a href="/accounts/login">accede</a></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
